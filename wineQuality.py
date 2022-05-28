@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report
 import warnings
+
 warnings.filterwarnings('ignore')
-from sklearn.model_selection import GridSearchCV, cross_val_score
+
 #Importing Dataset
 data=pd.read_excel('d:/corizo/Major project/Red_wine.xlsx')
 
@@ -32,7 +32,7 @@ Data analysis
 
 #1
 
-We will compare all the other feature propotional or not with the target 'Quality'
+We will compare all the other feature directly propotional or not with the target 'Quality'
 feature Selection Using plotting Correlatin Matrix and will choose the feature which is 
 highly correlated with 'qualitty'
 1.Poistive Correlation
@@ -42,7 +42,7 @@ highly correlated with 'qualitty'
 co_mat=data.corr() #return the correlational matrix
 plt.figure(figsize=(15,15))
 chart=sns.heatmap(co_mat, fmt='.1f',annot=True,cmap='Blues')
-##plt.show()
+plt.show()
 
 """
 #2
@@ -51,6 +51,10 @@ Data Preprocessing
     -Y label binarisation
     1 (good quality) if q > = 7
     0 (bad quality ) if q < 7
+
+StandardScaler: StandardScaler is used to resize the distribution of values
+        ​​so that the mean of the observed values ​​is 0 and the standard deviation
+        is 1.
 """
 
 X=data.iloc[:,0:11]
@@ -79,21 +83,18 @@ YTrain=y[dSet[:nTrain]]
 XTest=X[dSet[nTrain:]]
 YTest=y[dSet[nTrain:]]
 
+#Re-distributing Data
 sc=StandardScaler()
 XTrain=sc.fit_transform(XTrain[:,np.newaxis])
 XTest=sc.fit_transform(XTest[:,np.newaxis])
+print(XTrain)
+print(YTrain)
 
 """
-Model Training
-Model Algorithm: Random Forest Classifier
+#3
 
+Training Model: Support Vector Classifier
 
-model=RandomForestClassifier()
-model.fit(XTrain,YTrain)  #fit the data to Random forest classifier
-
-
-Model Evaluation
-    -Accuracy on test data 
 """
 
 
@@ -101,8 +102,13 @@ model = SVC(C = 1.4, gamma = 0.1, kernel = 'rbf')
 model.fit(XTrain,YTrain)
 y_pred = model.predict(XTest)
 
+"""
+#4
+
+Model Evaluation
+    -Accuracy on test data 
+
+"""
 print(classification_report(YTest, y_pred))
 print("training accuracy :", model.score(XTrain, YTrain))
 print("testing accuracy :", model.score(XTest, YTest))
-
-model_eval = cross_val_score(estimator = model, X = XTrain, y = YTrain, cv = 10)
