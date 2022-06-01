@@ -27,6 +27,14 @@ data['quality'] = np.where(data['quality'].isna(), data['quality'].fillna(data['
                                               data['quality'])
 print("How many Alcohol or quality data are missing : ",data['alcohol'].isna().sum(),data['quality'].isna().sum())
 
+#Removing Duplicacy in Dataset
+
+data.drop_duplicates(inplace=True)
+
+#Checking for duplicacy in data
+Duplicate=data.duplicated().sum()
+print("Duplicated Data : ",Duplicate)
+
 """
 Data analysis
 
@@ -53,7 +61,7 @@ Data Preprocessing
     0 (bad quality ) if q < 7
 
 StandardScaler: StandardScaler is used to resize the distribution of values
-        ​​so that the mean of the observed values ​​is 0 and the standard deviation
+        so that the mean of the observed values is 0 and the standard deviation
         is 1.
 """
 
@@ -66,7 +74,6 @@ Splitting Dataset into
     -test set
 
 """
-
 X=np.asarray(X.alcohol)
 y=np.asarray(y)
 
@@ -112,3 +119,4 @@ Model Evaluation
 print(classification_report(YTest, y_pred))
 print("training accuracy :", model.score(XTrain, YTrain))
 print("testing accuracy :", model.score(XTest, YTest))
+
