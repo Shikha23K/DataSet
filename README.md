@@ -43,3 +43,8 @@ Input variables (based on physicochemical tests):
 Output variable (based on sensory data):
 
 12 - quality (score between 0 and 10)
+
+
+# Technologies Used
+        Python: Numpy, pandas, sklearn, matplotlib.pyplot, SVC( Support Vector Classifier Model), StandardScaler, seaborn
+        
