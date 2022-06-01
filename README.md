@@ -1,23 +1,37 @@
 ## Wine-Quality-Prediction--Classificatication-Problem
 
-As the quarantine continues, I’ve picked up a number of hobbies and interests… including WINE. Recently, I’ve acquired a taste for wines, although I don’t really know what makes a good wine. Therefore, I decided to apply some machine learning models to figure out what makes a good quality wine!
+# Instructions
+There is given Red_wine.xlsx Data set in this repository.
+These datasets can be viewed as classification or regression tasks. The classes are ordered and not balanced (e.g. there are munch more normal wines than excellent or poor ones). Outlier detection algorithms could be used to detect the few excellent or poor wines. Also, we are not sure if all input variables are relevant. So it could be interesting to test feature selection methods.
 
-For this project, I used Kaggle’s Red Wine Quality dataset to build various classification models to predict whether a particular red wine is “good quality” or not. Each wine in this dataset is given a “quality” score between 0 and 10. For the purpose of this project, I converted the output to a binary output where each wine is either “good quality” (a score of 7 or higher) or not (a score below 7). The quality of a wine is determined by 11 input variables:
+Two datasets were combined and few values were randomly removed.
 
-1 Fixed acidity
-2 Volatile acidity
-3 Citric acid
-4 Residual sugar
-5 Chlorides
-6 Free sulfur dioxide
-7 Total sulfur dioxide
-8 Density
-9 pH
-10 Sulfates
-11 Alcohol
-12 Objectives
+Attribute Information:
 
-##The objectives of this project are as follows
+Input variables (based on physicochemical tests):
 
-To experiment with different classification methods to see which yields the highest accuracy
-To determine which features are the most indicative of a good quality wine
+1 - fixed acidity
+
+2 - volatile acidity
+
+3 - citric acid
+
+4 - residual sugar
+
+5 - chlorides
+
+6 - free sulfur dioxide
+
+7 - total sulfur dioxide
+
+8 - density
+
+9 - pH
+
+10 - sulphates
+
+11 - alcohol
+
+Output variable (based on sensory data):
+
+12 - quality (score between 0 and 10)
