@@ -1,11 +1,4 @@
 ## Major Project
-# Team : 4
-    Shikha K
-    Ashwini K S
-    Archit Kumar Jayaswal
-    Pratapa Rama Krishna
-
-
 ## Wine-Quality-Prediction--Classificatication-Problem
 
 # Instructions
